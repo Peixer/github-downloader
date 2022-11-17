@@ -172,7 +172,7 @@ def _process_repo(repo_data, repodir):
         for curdir, dirs, files in os.walk(repodir):
 
             files = [curdir + '/' + f for f in files if '.git' not in f and f[
-                0] is not '.' and 'LICENSE' not in f and 'node_modules' not in f and '.min.' not in f and f.split('.')[
+                0] != '.' and 'LICENSE' not in f and 'node_modules' not in f and '.min.' not in f and f.split('.')[
                          -1] not in bad_extensions]
 
             filenames = [f.split("/")[-1] for f in files]
@@ -192,7 +192,7 @@ def _process_repo(repo_data, repodir):
                     text_outputs.append(None)
             for i in range(len(files)):
                 text = text_outputs[i]
-                if text is not None:
+                if text != None:
                     meta['file_name'] = filenames[i]
                     meta['mime_type'] = extensions[i]
                     if out is None:
@@ -301,7 +301,7 @@ if __name__ == '__main__':
         not_none = 0
         none = 0
         for repo in repos_out:
-            if repo is not None:
+            if repo != None:
                 not_none += 1
                 for f in repo:
                     ar.add_data(f[0], meta=f[1])
